@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="Zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>山间咖啡</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0%;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "PingFang sc", "Microsofot YaHei", sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    /* ========== 全局重置 ========== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    /* 内容最大宽度 + 水平居中，所有区块复用 */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ========== 按钮 ========== */
+    .btn {
+      display: inline-block;
+      padding: 10px 24px;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .btn-primary {
+      background: #6b4226;
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #4e2f1a;
+    }
+
+    .btn-outline {
+      border: 2px solid #6b4226;
+      color: #6b4226;
+    }
+
+    .btn-outline:hover {
+      background: #6b4226;
+      color: #fff;
+    }
+
+    /* ========== 导航栏 ========== */
+    .header {
+      background: #fff;
+      border-bottom: 1px solid #eee;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      /* 垂直居中 */
+      justify-content: space-between;
+      /* 左中右分布 */
+      height: 70px;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: #6b4226;
+    }
+
+    .menu {
+      display: flex;
+      gap: 32px;
+    }
+
+    .menu a:hover {
+      color: #6b4226;
+    }
+
+    /* ========== Hero 区 ========== */
+    .hero {
+      background: #faf5ef;
+      padding: 80px 0;
+    }
+
+    .hero-inner {
+      display: flex;
+      align-items: center;
+      /* 左右两栏垂直居中 */
+      gap: 60px;
+    }
+
+    .hero-text {
+      flex: 1;
+      /* 左右各占一半 */
+    }
+
+    .hero-text h1 {
+      font-size: 48px;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: #3b2314;
+    }
+
+    .hero-text p {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 32px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+    }
+
+    .hero-img {
+      flex: 1;
+    }
+
+    /* 图片占位块；换成真实图片后，给 img 设 width:100% 即可 */
+    .img-placeholder {
+      height: 360px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #d9b99b, #a8754f);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 100px;
+    }
+
+    .hero-img img,
+    .about-img img {
+      width: 100%;
+      border-radius: 16px;
+      display: block;
+    }
+
+    /* ========== 特点区 ========== */
+    .features {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 48px;
+      color: #3b2314;
+    }
+
+    .cards {
+      display: flex;
+      gap: 24px;
+    }
+
+    .card {
+      flex: 1;
+      /* 三列等宽 */
+      padding: 32px 24px;
+      /*卡片内部留白，上下32px,左右24px.*/
+      border: 1px solid #eee;
+      border-radius: 12px;
+      /*浅灰色细边框加12px圆角*/
+      text-align: center;
+      /*文字和图标居中*/
+      transition: transform 0.2s, box-shadow 0.2s;
+      /*慢慢过渡*/
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .card-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+
+    .card h3 {
+      font-size: 20px;
+      margin-bottom: 8px;
+      color: #3b2314;
+    }
+
+    .card p {
+      color: #666;
+    }
+
+    /* ========== 介绍区 ========== */
+    .about {
+      padding: 80px 0;
+      background: #faf5ef;
+    }
+
+    .about-inner {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .about-img {
+      flex: 1;
+    }
+
+    .about-text {
+      flex: 1;
+    }
+
+    .about-text h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: #3b2314;
+    }
+
+    .about-text p {
+      color: #666;
+      margin-bottom: 16px;
+    }
+
+    /* ========== 页脚 ========== */
+    .footer {
+      background: #3b2314;
+      color: #d9c7b8;
+      text-align: center;
+      padding: 32px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <!-- Hero 区：左文右图 -->
+    <section class="hero">
+      <div class="hero-inner container">
+        <div class="hero-text">
+          <h1>一杯咖啡，<br>一座山。</h1>
+          <p>来自海拔 1500 米的咖啡豆，手工烘焙，把山间的清晨装进你的杯子。</p>
+          <div class="hero-buttons">
+            <a href="#" class="btn btn-primary">立即购买</a>
+            <a href="#about" class="btn btn-outline">了解更多</a>
+          </div>
+        </div>
+        <div class="hero-img">
+          <div class="img-placeholder">☕</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 特点区：三列卡片 -->
+    <section class="features" id="features">
+      <div class="container">
+        <h2 class="section-title">为什么选择我们</h2>
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon">🏔️</div>
+            <h3>高山产地</h3>
+            <p>种植在高海拔山区，昼夜温差大，风味更丰富。</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">🔥</div>
+            <h3>现烘现发</h3>
+            <p>下单后才烘焙，三天内送到你手中，香气最新鲜。</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">🌱</div>
+            <h3>公平贸易</h3>
+            <p>直接向农户采购，让种植者获得合理的收入。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 介绍区：左图右文 -->
+    <section class="about" id="about">
+      <div class="about-inner container">
+        <div class="about-img">
+          <div class="img-placeholder">🏔️</div>
+        </div>
+        <div class="about-text">
+          <h2>我们的故事</h2>
+          <p>山间咖啡始于一次登山旅行。我们在山脚的小村庄喝到了当地人手冲的一杯咖啡，从此决定把这份味道带给更多人。</p>
+          <p>每一批咖啡豆，我们都亲自试喝、挑选，只留下最好的。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>
